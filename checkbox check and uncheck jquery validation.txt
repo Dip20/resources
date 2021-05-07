@@ -1,0 +1,17 @@
+  <input type="checkbox" name="" value="" id="paynow" onchange="pay_check(1);">
+
+ <input type="checkbox" name="" value="" id="paylater" onchange="pay_check(2);">
+
+
+  // pay now and pay later checkbox validation..
+  function pay_check(x)
+  {
+    if (x=="1")
+    {
+     $("#paylater").prop("checked",false);
+
+    }else if (x=="2")
+    {
+      $("#paynow").prop("checked",false);
+    }
+  }

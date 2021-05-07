@@ -1,0 +1,34 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Counter Up Demo</title>
+  <meta name="description" content="Counter Up - jQuery Plugin Demo">
+  <meta name="author" content="Benjamin Intal">
+  <link rel="author" href="https://plus.google.com/113101541449927918834"/>
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600' rel='stylesheet' type='text/css'>
+
+</head>
+
+<body>
+
+      <div class="container">
+        <h1 class="counter">125870</h1>
+      </div>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <!-- counter js -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
+    <script src="vendor/js/counterup.js"></script>
+    <script>
+      jQuery(document).ready(function( $ ) {
+          $('.counter').counterUp({
+              delay: 10,
+              time: 2000
+          });
+      });
+    </script>
+</body>
+</html>

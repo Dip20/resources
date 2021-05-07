@@ -1,0 +1,8 @@
+input:focus , textarea:focus
+{
+  border: 1px solid #E98074 !important;
+  border-color: #E98074 !important;
+  outline: none  !important;
+  /* box-shadow: none !important; */
+  box-shadow: 2px 0px 5px 2px rgba(233,128,116,0.87) !important;
+}

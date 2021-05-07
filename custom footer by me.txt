@@ -1,0 +1,47 @@
+<div class="container-fluid bg-dark text-white pt-5">
+    <div class="row pl-5 py-5">
+      <div class="col-md-3">
+        <h4>Job Portal</h4><br>
+        <p>Far far away, behind the word mountains, <br>far from the countries Vokalia and Consonantia,<br> there live the blind texts.</p>
+
+
+      </div>
+      <div class="col-md-3">
+        <h4>Quick Links</h4><br>
+        <a href="# text-decoration-none">Home</a><br>
+        <a href="# text-decoration-none">About</a><br>
+        <a href="# text-decoration-none">Contact</a><br>
+        <a href="# text-decoration-none">Search</a><br>
+        <a href="# text-decoration-none">Find Job</a>
+      </div>
+      <div class="col-md-3">
+        <h4>Job category</h4><br>
+        <a href="# text-decoration-none">Engineering</a><br>
+        <a href="# text-decoration-none">Web Development </a><br>
+        <a href="# text-decoration-none">Graphic Designer</a><br>
+        <a href="# text-decoration-none">Office & Admin</a><br>
+        <a href="# text-decoration-none">Customer Service</a><br>
+        <a href="# text-decoration-none">Marketing & Sales</a>
+      </div>
+      <div class="col-md-3">
+        <h4>Subscribe</h4><br>
+          <form class="" action="index.php" method="post">
+            <div class="row">
+              <div class="col-md-10">
+                <input type="text" name="" id="" class="form-control" placeholder="Enter Your Email">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-10">
+              <button type="submit" name="" class="btn btn-primary btn-md btn-block mt-2">Subscribe</button>
+              </div>
+            </div>
+          </form>
+      </div>
+    </div>
+  <div class="row bg-secondary text-white mt-5 text-center">
+    <div class="col">
+        <p class="pt-2">Copyright &copy; 2020  All Rights Reserved.</p>
+    </div>
+  </div>
+</div>

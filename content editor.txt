@@ -1,0 +1,1 @@
+https://ckeditor.com/ckeditor-4/download/

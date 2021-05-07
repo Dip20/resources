@@ -1,0 +1,349 @@
+<?php
+// session_start();
+require_once("../php/connection.php");
+require_once("../php/function.inc.php");
+
+$ERR=FALSE;
+$Err_msg="";
+
+?>
+
+<!doctype html>
+<html lang="en">
+   <head>
+      <!-- Required meta tags -->
+      <meta charset="utf-8">
+      <meta name="description" content="">
+      <meta name="author" content="">
+      <meta name="keywords" content="">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <link rel="icon" href="../images/sunny.ico">
+
+      <!-- Bootstrap CSS -->
+      <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+      <!-- fontaswome -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+      <!-- sweet alert -->
+      <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+      <!-- custom css -->
+      <!-- <link rel="stylesheet" href="../main.css"> -->
+      <title>Arati Electronics - User</title>
+   </head>
+   <body>
+      <div class="container-fluid">
+         <!-- nav starts here -->
+         <nav class="navbar navbar-expand-lg navbar-light bg-light fixed">
+            <a class="navbar-brand" href="index.php">Arati Electronics <?php echo Badge("Bongaon"); ?> </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+               <ul class="navbar-nav ml-auto">
+                  <li class="nav-item active">
+                     <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Inventory
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                      <a class="dropdown-item" href="sale-product.php">Sale Product</a>
+                      <a class="dropdown-item" href="view-stock.php">View Stock</a>
+                      <a class="dropdown-item" href="view-sales.php">View Sales</a>
+                      <a class="dropdown-item" href="search-product.php">Search Product</a>
+                    </div>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Profile
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                      <a class="dropdown-item" href="change-pass.php">Change password</a>
+                      <!-- <a class="dropdown-item" href="#">Settings</a> -->
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="#">Logout</a>
+                    </div>
+                  </li>
+                  <li class="nav-item">
+                     <a href="#" class="nav-link btn btn-primary btn-sm text-white mt-1">Support</a>
+                  </li>
+               </ul>
+            </div>
+         </nav>
+      </div>
+      <!-- nav ends  here -->
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index.php">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Sale Product</li>
+          </ol>
+      </nav>
+      <marquee> <p><b>Loged in as: Tapan Karmakar | Branch: Arati Bongaon | Access: Admin</b></p> </marquee>
+      <div class="container-fluid" id="welcome-container">
+        <h3 class="text-center">Sale Product</h3>
+
+        <form class="" action="sale-product.php" method="post">
+          <div class="header-info border pt-4">
+            <div class="form-inline justify-content-center">
+              <div class="form-group mb-2">
+                <label for="">Date</label>
+                <input type="text" readonly class="form-control mx-3" value="<?php echo date("yy-m-d"); ?>">
+              </div>
+              <div class="form-group mx-sm-3 mb-2">
+                <label for="">InvoiceNO</label>
+                <input type="text" class="form-control mx-2" readonly value="<?php echo "AE". date("dmyys").rand("11","99"); ?>">
+              </div>
+              <div class="form-group mx-sm-3 mb-2">
+                <label for="">Branch</label>
+                <input type="text" class="form-control mx-2" value="Bongaon" readonly>
+              </div>
+              <div class="form-group mx-sm-3 mb-2">
+                <label for="">SalesBy</label>
+                <input type="text" class="form-control mx-2" value="Tapan" readonly>
+              </div>
+            </div>
+            <br>
+            <div class="form-inline justify-content-start">
+              <div class="form-group mb-2 ml-1">
+                <label for="">Customer Name</label>
+                <input required type="text"  class="form-control mx-2" value="" placeholder="Enter customer Name" maxlength="30" autofocus>
+              </div>
+              <div class="form-group mx-sm-3 mb-2">
+                <label for="">ContactNo</label>
+                <input required type="number" class="form-control mx-1"  value="" placeholder="Enter  Mobile NO" maxlength="10">
+              </div>
+              <div class="form-group mx-sm-3 mb-2">
+                <label for="">Address</label>
+                <input required type="text" class="form-control mx-1" value="" placeholder="Enter Address" maxlength="80">
+              </div>
+            </div>
+            <br>
+          </div>
+
+
+          <div class="billing-info border py-3 px-2 mt-3">
+            <h5 class="text-center">Product info</h5>
+            <div class="row justify-content-center mb-2 mt-4">
+              <div class="col-lg-2 col-md-6 col-sm-12 mb-2">
+                <label for="">Product</label>
+                <input type="text" list="product_list" required class="form-control" name="product_name" autocomplete="off" id="product_name">
+                  <datalist class="" id="product_list">
+
+                  <?php
+                  //view product..
+                  //php code here to display data.
+                  $view = "SELECT * FROM tbl_product_list";
+                  $run_view = mysqli_query($conn,$view);
+                  if ($run_view)
+                  {
+                    if (mysqli_num_rows($run_view)>0)
+                    {
+                      while ($data=mysqli_fetch_assoc($run_view))
+                      {
+                        echo '<option value="'.$data['name'].'">';
+                      }
+                    }
+                  }
+                  ?>
+                  </datalist>
+              </div>
+                <div class="col-lg-2 col-md-6 col-sm-12 mb-2">
+                  <label for="">Serial NO</label>
+                  <input type="text" name="" value="" class="form-control" autocomplete="off" maxlength="20" required id="serial_no">
+                </div>
+                <div class="col-lg-1 col-md-6 col-sm-12 mb-2">
+                  <label for="">QTY</label>
+                  <input type="number" name="" value="1" class="form-control" autocomplete="off" min="1" max="20" maxlength="5" required id="qty" onchange="update_qty()">
+                </div>
+                <div class="col-lg-2 col-md-6 col-sm-12 mb-2">
+                  <label for="">Price/unit(INR)</label>
+                  <input type="number" name="" value="" class="form-control" autocomplete="off" min="1" maxlength="5" required id="price_per_unit" onkeyup="validate()">
+                </div>
+                <div class="col-lg-1 col-md-6 col-sm-12 mb-2">
+                  <label for="">Total(INR)</label>
+                  <input type="text" name="" value="" class="form-control" autocomplete="off" min="1" maxlength="5" required id="total" disabled>
+                </div>
+                <div class="col-lg-1 col-md-6 col-sm-12 mb-2">
+                  <label for="">GST (%)</label>
+                  <input type="number" name="" value="" class="form-control" autocomplete="off" min="1" maxlength="5" required disabled id="gst">
+                </div>
+                <div class="col-lg-2 col-md-6 col-sm-12 mb-2">
+                  <label for="">Grand Total</label>
+                  <input type="number" name="" value="" class="form-control" autocomplete="off" min="1" maxlength="10" required disabled id="subtotal">
+                </div>
+                <div class="col-lg-1 col-md-6 col-sm-12 mb-2">
+                  <label for="">Calculate</label><br>
+                  <button type="button"  class="btn btn-info btn-md" onclick="calculate()" id="calculate_btn" disabled><i class="fas fa-equals"></i> </button>
+                </div>
+            </div>
+            <div class="row justify-content-center mb-3 mt-5">
+              <div class="col-lg-10 col-md-12 col-sm-12">
+                <button type="submit" name="sale-product" class="btn btn-primary btn-md" id="sale_product_btn" disabled><i class="fas fa-shopping-bag"></i> Sale Product</button>
+                <button type="reset"  class="btn btn-secondary btn-md"><i class="fas fa-magic"></i> Reset</button>
+                <button  type="button"  class="btn btn-danger btn-md" onclick="Cancel()"><i class="fas fa-ban"></i> Cancel</button>
+              </div>
+            </div>
+          </div>
+
+        </form>
+      </div>
+    </div>
+      <div class="gap" style="height:10vh"></div>
+
+
+      <footer class="footer">
+        <div class="container">
+          <span class="text-muted">&copy; <?php echo date("yy"); ?> all right reserved by Arati Electronics. </span>
+        </div>
+      </footer>
+      <!-- Optional JavaScript -->
+      <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+      <script src="../bootstrap/js/jquery.js"></script>
+      <script src="../bootstrap/js/bootstrap.min.js"></script>
+
+
+
+      <!-- here is sweet alert for Cancel button. -->
+      <script>
+        function Cancel()
+        {
+          swal({
+          title: "Are you sure to Cancel?",
+          text: "Billing will cancel!",
+          icon: "warning",
+          buttons: true,
+          dangerMode: true,
+          })
+          .then((willDelete) => {
+          if (willDelete) {
+            // swal("Poof! Your imaginary file has been deleted!", {
+            //   icon: "success",
+            window.location.href = "view-stock.php";
+            // });
+          } else {
+            // swal("Your imaginary file is safe!");
+          }
+          });
+
+        }
+
+        // here is code for validation of sale-product from........................................................................
+
+        function validate()
+        {
+          // auto call update_qty function
+
+          //set var..
+          var product_name = $("#product_name").val();
+          var serial_no = $("#serial_no").val();
+          var price_per_unit = $("#price_per_unit").val();
+
+            if (product_name!=0)
+          {
+              //now check serial no not null
+              if (serial_no!=0)
+              {
+                //now check price per unit not null
+                if (price_per_unit!=0)
+                {
+                  //everything validated so process your work here...
+                  $("#calculate_btn").prop('disabled', false);
+                }else {
+                  $("#calculate_btn").prop('disabled', true);
+                  $("#sale_product_btn").prop('disabled', true);
+
+                }
+
+              }else {
+                //serial no is null so show alert and disabled others property
+                alert("please select Serial No");
+                  $("#price_per_unit").val("");
+                  $("#serial_no").focus();
+              }
+
+          }else {
+            //product name is null so show alert and disabled others property
+            alert("please select Product");
+              $("#price_per_unit").val("");
+               $("#product_name").focus();
+          }
+
+        }//end of function validate..
+
+
+        // calculate button click...........................
+        function calculate()
+        {
+          var product_name = $("#product_name").val();
+          var serial_no = $("#serial_no").val();
+          var qty = $("#qty").val();
+          var subtotal = $("#subtotal").val();
+
+          $.ajax({
+            url:"../php/check_sale_product.php",
+            type:"POST",
+            dataType:"JSON",
+            data:{serial:serial_no,product:product_name},
+
+            success:function(data){
+                if (data=="0")
+                {
+                  //this means combination missmatch
+                  $("#sale_product_btn").prop('disabled', true);
+                  swal("Serial NO And Product combination missmatch!", "Please enter correct combination!", "error");
+
+                }else {
+
+                  //validate here the user input price is greter than the database saved price..
+                  var price_per_unit = $("#price_per_unit").val();
+                  var unit_price_DB = data.unit_price;
+                  if (price_per_unit<=unit_price_DB)
+                  {
+                    swal("Enter Unit price Grether than Product Set price!", "", "error");
+                  }else {
+                    //all validation have done so enter process here....
+                    // calculate gst and show sub total
+                    $("#gst").val(data.gst1);
+                    calculate_subtotal();
+                    $("#sale_product_btn").prop('disabled', false);
+                  }
+
+
+                }
+            }//end of success function
+          });//end of ajax function
+        }//end of calculate button click function calculate()
+
+
+        // calculate subtotal and gstand total
+        function calculate_subtotal()
+        {
+          var base_price = $('#price_per_unit').val() *1;
+          var gst = $('#gst').val();
+          var gst_amt = gst/100;
+          var calculate_gst_price = (base_price)*(gst_amt);
+          var calculate_net = (base_price + calculate_gst_price);
+          var total = calculate_net.toFixed(2);
+          var qty = $("#qty").val();
+          var subtotal = total*qty;
+            $('#subtotal').val(subtotal);
+          //calculate total.
+          var total1 = (qty*base_price);
+          $('#total').val(total1);
+
+        }
+
+      // function update_qty(){
+      //   var qty = $("#qty").val();
+      //   if (qty!=0)
+      //   {
+      //     calculate();
+      //   }else {
+      //     //nothing
+      //   }
+      // }
+
+      </script>
+
+   </body>
+</html>

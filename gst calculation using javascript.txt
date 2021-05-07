@@ -1,0 +1,11 @@
+<script type="text/javascript">
+  function calculate(){
+    var base_price = $('#price').val() *1;
+    var gst = $('#gst').val();
+    var gst_amt = gst/100;
+    var calculate_gst_price = (base_price)*(gst_amt);
+    calculate_net = (base_price + calculate_gst_price);
+    var price_per_unit = calculate_net.toFixed(2);
+    $('#finalprice').val(price_per_unit);
+  }
+</script>

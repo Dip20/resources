@@ -1,0 +1,9 @@
+$('#custom').attr('pk','1').show();
+$("#custom").removeAttr('pk').hide();
+
+
+
+add and remove required validation in a input using jquery
+
+ $("#custom_val").prop('required',true);
+ $("#custom_val").prop('required',false);

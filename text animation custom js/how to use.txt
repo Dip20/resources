@@ -1,0 +1,9 @@
+//include the custom js file 
+<h1>This pen is
+  <span
+     class="txt-rotate"
+     data-period="2000"
+     data-rotate='[ "nerdy.", "simple.", "pure JS.", "pretty.", "fun!" ]'></span>
+</h1>
+
+

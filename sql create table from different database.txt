@@ -1,0 +1,1 @@
+$sql = "CREATE TABLE tbl_upload  SELECT * from test2.tbl_upload";

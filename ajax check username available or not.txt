@@ -1,0 +1,32 @@
+<input type="text" name="" value="" placeholder="" class="form-control" required onchange="lookup_username(this.value)" id="username">
+//add disabled property in button.
+
+<script>
+  function lookup_username(a){
+    var user=a;
+    if (a!=="") {
+      // ajax request for check username available or not.
+      $(document).ready(function(){
+        $.ajax({
+          url:'check_user.php',
+          type:'POST',
+          data:'user='+a,
+          success: function(data){
+            if (data=="True") {
+              //username not available so user  registred
+              $('#user_alert').removeClass("d-none");//display alert
+              $('#register').prop('disabled', true);
+            }else {
+              //username available so user can not registred with same name
+              $('#user_alert').addClass("d-none");
+              $('#register').prop('disabled', false);
+            }
+          }
+        });
+      });
+    }else {
+      // disabled button because username is empty
+      $('#register').prop('disabled', true);
+    }
+  }
+</script>

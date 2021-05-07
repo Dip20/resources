@@ -1,0 +1,2 @@
+echo '<script>swal("Download file link is missing","You are being redirected to home page.","warning");
+             setTimeout(myFunction, 1700); function myFunction(){window.location.href ="https://learnersinstitute.in";}</script>';

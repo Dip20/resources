@@ -1,0 +1,2 @@
+        $res = json_decode($your_json_data);
+          echo $res->status;

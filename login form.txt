@@ -1,0 +1,28 @@
+    <div class="container">
+      <h2 class="text text-center mt-4">Coockie Login Form</h2>
+      <form  action="coockie.php" method="post">
+        <div class="row justify-content-center mt-5">
+          <div class="col col-sm-12 col-md-8 col-lg-6">
+            <label for="">Username</label>
+            <input type="text" name="username" value="<?php echo $set_user; ?>" class="form-control mb-1" placeholder="Enter Username">
+          </div>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col col-sm-12 col-md-8 col-lg-6">
+            <label for="">Password</label>
+            <input type="text" name="password" value="<?php echo $set_pass; ?>" class="form-control mb-1" placeholder="Password">
+          </div>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col col-sm-12 col-md-8 col-lg-6">
+            <input type="checkbox" name="remember"  class=" mb-3" > <label for="">Remember Me</label>
+          </div>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col col-sm-12 col-md-8 col-lg-6">
+            <input type="submit" name="login" value="Login" class="btn btn-sm btn-primary mb-3">
+            <input type="reset" name="reset" value="Reset" class="btn btn-sm btn-danger mb-3">
+          </div>
+        </div>
+      </form>
+    </div>

@@ -1,0 +1,29 @@
+paste this code to your any page.
+function parameter pageid 1 is for user page || pageid 2 is for admin.
+
+
+
+//retrict user access.
+if (isset($_SESSION['is_loged']))
+{
+    //function parameter pageid 1 is for user page || pageid 2 is for admin.
+    user_restriction("2",$_SESSION['usertype']);
+}else {
+  redirect("../index.php");
+}
+
+
+
+// function to restrict user to access pages which is user dont have access.
+function user_restriction($pageid,$type)
+{
+  if ($pageid=="1" AND $type=="Admin")
+  {
+    //admin requested to access user page so redirect to admin page.
+    redirect("../admin/index.php");
+  }elseif ($pageid=="2" AND $type=="User")
+  {
+    // user requested to access admin page so redirect to user page.
+    redirect("../u/index.php");
+  }
+}

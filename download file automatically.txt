@@ -1,0 +1,3 @@
+      <a id="download_link" href="<?php echo $_SESSION['dlink']; ?>" download hidden>Auto download</a>
+
+         echo "<script>function get_download(){document.getElementById('download_link').click();}get_download();</script>";

@@ -1,0 +1,26 @@
+<?php
+require_once("connection.php");
+$product = $_POST['product'];
+$serial = $_POST['serial'];
+//
+
+$check = mysqli_query($conn,"SELECT * FROM tbl_product_master WHERE serial_no='$serial' AND p_name='$product'");
+if ($check)
+{
+  if (mysqli_num_rows($check)>0)
+  {
+    $data = mysqli_fetch_assoc($check);
+    // echo $data['unit_price'];
+    // echo $data['gst'];
+    $dt['unit_price'] = $data['unit_price'];
+    $dt['gst1'] = $data['gst'];
+    
+    echo json_encode($dt);
+
+  }else {
+    echo "0";
+  }
+}
+
+
+ ?>

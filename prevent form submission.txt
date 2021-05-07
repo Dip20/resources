@@ -1,0 +1,10 @@
+
+    <script>
+    $('#form1').on('submit',function(e){
+      e.preventDefault();
+    });
+    function a(){
+      alert("aaaa");
+
+    }
+    </script>

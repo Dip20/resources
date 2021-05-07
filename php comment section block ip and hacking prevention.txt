@@ -1,0 +1,50 @@
+<?php
+  require_once("php/connection.php");
+  require_once("php/function.php");
+
+  //here is comment processing...
+ if (isset($_POST['submit-form']))
+ {
+    $user_ip = $_SERVER['REMOTE_ADDR'];
+    $check_ip = mysqli_query($conn,"SELECT * FROM tbl_comment WHERE user_ip='$user_ip'");
+    if(mysqli_num_rows($check_ip)>0){
+          echo '<script>swal("Thanks for your Comment!", "Your Comment Published Successfully", "success");
+          setTimeout(myFunction, 1600); function myFunction(){window.location.href ="index.php";}</script></script>';
+    }else{
+        $count = $_SESSION['count'];
+   if ($count>1)
+   {
+     echo '<script>swal("You reached maximum comment limit!", " ", "warning");
+     setTimeout(myFunction, 1600); function myFunction(){window.location.href ="index.php";}</script></script>';
+   }else {
+     $username = htmlspecialchars($_POST['username']);
+     $email = htmlspecialchars($_POST['email']);
+     $message = htmlspecialchars($_POST['message']);
+     $img_path = "images/resource/thumb-1.jpg";
+     $comment_time = date("d-m-yy h:i:s a");
+     $position = htmlspecialchars($_POST['JobTitle']);
+    //  $user_ip = $_SERVER['REMOTE_ADDR'];
+     $user_os = get_browser(null, true);
+      $sql = "INSERT INTO tbl_comment (fullname,email,comment,img_path,comment_time,position,show_comment,user_ip,user_os)
+              VALUES ('$username','$email','$message','$img_path','$comment_time','$position','NO','$user_ip','$user_os')";
+
+      $run_sql = mysqli_query($conn,$sql);
+      if($run_sql)
+      {
+          $_SESSION['count']+=1;
+          echo '<script>swal("Thanks for your Comment!", "Your Comment Published Successfully", "success");
+          setTimeout(myFunction, 1600); function myFunction(){window.location.href ="index.php";}</script></script>';
+          // call here php email function.
+          send_mail($username,$message);
+
+      }else{
+        $_SESSION['count']+=1;
+        echo '<script>swal("Server Not Responding!", "Try after sometime", "error");
+          setTimeout(myFunction, 1600); function myFunction(){window.location.href ="index.php";}</script></script></script>';
+        //call here error log file
+
+       }
+   }
+    }
+
+ }
